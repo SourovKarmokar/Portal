@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import { createPortal } from 'react-dom'
 import  ModelContent  from "../ModelContent";
+import Portal from '../../Portal';
 
 const PortalModal = () => {
     const [showModal , setShowModal] = useState(false)
@@ -12,8 +12,10 @@ const PortalModal = () => {
       >Modal using React Portal</button>
 
         {
-        showModal && createPortal (
-            <ModelContent onClose={() => setShowModal(false)}/> , document.body
+        showModal &&  (
+          <Portal>
+            <ModelContent onClose={() => setShowModal(false)}/> 
+          </Portal>
         )
       }
 
